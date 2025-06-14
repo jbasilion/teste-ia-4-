@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Assistente Jurídico com IA</title>
+  <script>
+    const __firebase_config = {
+      apiKey: "AIzaSyA09I-bYqDWhruAT5deN3_vWSotnBmgT0A",
+      authDomain: "teste-ia-1-5a510.firebaseapp.com",
+      projectId: "teste-ia-1-5a510",
+      storageBucket: "teste-ia-1-5a510.firebasestorage.app",
+      messagingSenderId: "184992945461",
+      appId: "1:184992945461:web:06a7bfbc70ae5ddf1de87c"
+    };
+    const __app_id = "assistente-juridico-ia";
+    const __initial_auth_token = null;
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .tab-active { font-weight: bold; border-bottom: 2px solid #2563eb; }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <div class="max-w-6xl mx-auto mt-10 p-6 bg-white shadow rounded">
+    <h1 class="text-3xl font-bold mb-6 text-center">Assistente Jurídico com IA</h1>
+    <div class="flex justify-around border-b mb-6">
+      <button class="tab-btn py-2 px-4" data-tab="analyze">Análise com IA</button>
+      <button class="tab-btn py-2 px-4" data-tab="knowledge">Base de Conhecimento</button>
+      <button class="tab-btn py-2 px-4" data-tab="history">Histórico</button>
+    </div>
+
+    <div id="tab-analyze" class="tab-content grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div>
+        <textarea id="user-question" class="w-full border p-2 rounded mb-4" rows="6" placeholder="Digite sua pergunta jurídica..."></textarea>
+        <button id="run-ai" class="bg-blue-600 text-white px-4 py-2 rounded w-full">Executar IA</button>
+        <div id="ai-result" class="mt-4 p-4 bg-gray-100 rounded whitespace-pre-wrap min-h-[100px]"></div>
+      </div>
+      <div>
+        <h2 class="text-lg font-semibold mb-2">Documentos Carregados</h2>
+        <div id="doc-viewer" class="p-4 bg-gray-50 border rounded overflow-y-auto max-h-80 text-sm">
+          <p class="text-gray-500">Nenhum documento carregado ainda.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-knowledge" class="tab-content hidden">
+      <input type="file" id="file-upload" multiple accept=".txt" class="mb-4" />
+      <ul id="file-list" class="space-y-2 text-sm"></ul>
+    </div>
+
+    <div id="tab-history" class="tab-content hidden">
+      <ul id="history-list" class="space-y-2 text-sm"></ul>
+    </div>
+
+    <div id="auth-status" class="mt-6 text-sm text-gray-500 text-center">Conectando...</div>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,1 +1,0 @@
-// app.js funcional será preenchido com lógica completa após upload

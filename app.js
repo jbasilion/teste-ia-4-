@@ -100,7 +100,7 @@ async function carregarHistorico() {
 // Gemini API: gerar resposta com base em pergunta + documentos
 async function gerarRespostaGemini(pergunta, documentos) {
   const prompt = `Documentos base:\n${documentos}\n\nPergunta: ${pergunta}`;
-  const res = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyCLozeU35MBIZGSxMOspFN2VYeV74ujPjs", {
+const res = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyCLozeU35MBIZGSxMOspFN2VYeV74ujPjs");
     method: "POST",
     headers: {
       "Content-Type": "application/json"

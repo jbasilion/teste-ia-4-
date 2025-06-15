@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Assistente Jurídico com IA</title>
+  <script>
+    const __firebase_config = {
+      apiKey: "AIzaSyA09I-bYqDWhruAT5deN3_vWSotnBmgT0A",
+      authDomain: "teste-ia-1-5a510.firebaseapp.com",
+      projectId: "teste-ia-1-5a510",
+      storageBucket: "teste-ia-1-5a510.firebasestorage.app",
+      messagingSenderId: "184992945461",
+      appId: "1:184992945461:web:06a7bfbc70ae5ddf1de87c"
+    };
+    const __app_id = "assistente-juridico-ia";
+    const __initial_auth_token = null;
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .tab-active { background-color: #2563eb; color: white; }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <div class="flex h-screen">
+    <div class="w-64 bg-white shadow-lg flex flex-col p-4 space-y-2">
+      <h1 class="text-xl font-bold mb-4 text-center">Assistente Jurídico</h1>
+      <button class="tab-btn py-2 px-4 rounded text-left" data-tab="analyze">Análise com IA</button>
+      <button class="tab-btn py-2 px-4 rounded text-left" data-tab="knowledge">Base de Conhecimento</button>
+      <button class="tab-btn py-2 px-4 rounded text-left" data-tab="history">Histórico</button>
+      <div id="auth-status" class="mt-auto text-sm text-gray-500 text-center pt-4 border-t"></div>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-6">
+      <div id="tab-analyze" class="tab-content grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div>
+          <textarea id="user-question" class="w-full border p-2 rounded mb-4" rows="6" placeholder="Digite sua pergunta jurídica..."></textarea>
+          <button id="run-ai" class="bg-blue-600 text-white px-4 py-2 rounded w-full">Executar IA</button>
+          <div id="ai-result" class="mt-4 p-4 bg-gray-100 rounded whitespace-pre-wrap min-h-[100px]"></div>
+        </div>
+        <div>
+          <h2 class="text-lg font-semibold mb-2">Documentos Carregados</h2>
+          <div id="doc-viewer" class="p-4 bg-gray-50 border rounded overflow-y-auto max-h-80 text-sm">
+            <p class="text-gray-500">Nenhum documento carregado ainda.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-knowledge" class="tab-content hidden">
+        <input type="file" id="file-upload" multiple accept=".txt" class="mb-4" />
+        <ul id="file-list" class="space-y-2 text-sm"></ul>
+      </div>
+
+      <div id="tab-history" class="tab-content hidden">
+        <ul id="history-list" class="space-y-2 text-sm"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+  <script>
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-content").forEach(c => c.classList.add("hidden"));
+        document.querySelector(`#tab-${btn.dataset.tab}`).classList.remove("hidden");
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("tab-active"));
+        btn.classList.add("tab-active");
+      });
+    });
+  </script>
+</body>
+</html>
